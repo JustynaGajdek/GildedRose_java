@@ -12,12 +12,12 @@ public class Inventory {
 	public Inventory() {
 		super();
 		items = new Item[] {
-					new Item("+5 Dexterity Vest", 10, 20), 
+					new Item("+5 Dexterity Vest", 10, 20),
 					new Item("Aged Brie", 2, 0),
 					new Item("Elixir of the Mongoose", 5, 7),
 					new Item("Sulfuras, Hand of Ragnaros", 0, 80),
 					new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
-					new Item("Conjured Mana Cake", 3, 6) 
+					new Item("Conjured Mana Cake", 3, 6)
 				};
 
 	}
@@ -66,14 +66,28 @@ public class Inventory {
 								- items[i].getQuality());
 					}
 				} else {
-					if (items[i].getQuality() < 50) {
-						items[i].setQuality(items[i].getQuality() + 1);
-					}
+					increaseQuality(items[i]);
 				}
 			}
 		}
 	}
 
-}
+	private void increaseQuality(Item item) {
+		if (item.getName().equals("Aged Brie")) {
+			if (item.getQuality() < 50) {
+				item.setQuality(item.getQuality() + 1);
+			}
+		}
+	}
+
+	private void decreaseQuality(Item item){
+		if(item.getName().equals("Backstage passes to a TAFKAL80ETC concert")){
+			if (item.getQuality() > 0) {
+				item.setQuality(item.getQuality() - 1);
+			}
+		}
+	}
+	}
+
 
 
